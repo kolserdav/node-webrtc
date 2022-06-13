@@ -148,7 +148,7 @@ TO_NAPI_IMPL(int16_t, pair) {
 
 FROM_NAPI_IMPL(int32_t, value) {
   if (!value.IsNumber()) {
-    std::cout << value;
+     std::cout << value.IsNumber();
     return Validation<int32_t>::Invalid("Expected a 32-bit integer 1");
   }
   auto maybeNumber = value.ToNumber();
