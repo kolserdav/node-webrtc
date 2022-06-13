@@ -429,6 +429,7 @@ Napi::Value RTCPeerConnection::AddIceCandidate(const Napi::CallbackInfo& info) {
   CONVERT_ARGS_OR_REJECT_AND_RETURN_NAPI(deferred, info, candidate, std::shared_ptr<webrtc::IceCandidateInterface>)
 
   Dispatch(CreatePromise<RTCPeerConnection>(deferred, [this, candidate](auto deferred) {
+    // TODO this place of error
     if (_jinglePeerConnection
         && _jinglePeerConnection->signaling_state() != webrtc::PeerConnectionInterface::SignalingState::kClosed
         && _jinglePeerConnection->AddIceCandidate(candidate.get())) {
