@@ -1,5 +1,5 @@
 #include "src/converters/napi.h"
-
+#include <iostream>
 #include "src/functional/validation.h"
 
 namespace node_webrtc {
@@ -148,6 +148,7 @@ TO_NAPI_IMPL(int16_t, pair) {
 
 FROM_NAPI_IMPL(int32_t, value) {
   if (!value.IsNumber()) {
+    std::cout << value;
     return Validation<int32_t>::Invalid("Expected a 32-bit integer 1");
   }
   auto maybeNumber = value.ToNumber();
