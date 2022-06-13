@@ -148,7 +148,7 @@ TO_NAPI_IMPL(int16_t, pair) {
 
 FROM_NAPI_IMPL(int32_t, value) {
   if (!value.IsNumber()) {
-    return Validation<int32_t>::Invalid("Expected a 32-bit integer");
+    return Validation<int32_t>::Invalid("Expected a 32-bit integer 1");
   }
   auto maybeNumber = value.ToNumber();
   if (maybeNumber.Env().IsExceptionPending()) {
@@ -156,7 +156,7 @@ FROM_NAPI_IMPL(int32_t, value) {
   }
   auto doubleValue = maybeNumber.DoubleValue();
   if (doubleValue < INT32_MIN || doubleValue > INT32_MAX) {
-    return Validation<int32_t>::Invalid("Expected a 32-bit integer");
+    return Validation<int32_t>::Invalid("Expected a 32-bit integer 2");
   }
   return Pure(maybeNumber.Int32Value());
 }
