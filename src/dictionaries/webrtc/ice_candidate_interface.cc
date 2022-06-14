@@ -1,6 +1,5 @@
 #include "src/dictionaries/webrtc/ice_candidate_interface.h"
 
-#include <iostream>
 #include <iosfwd>
 #include <utility>
 
@@ -35,7 +34,6 @@ static Validation<webrtc::IceCandidateInterface*> ICE_CANDIDATE_INTERFACE_FN(
   if (!candidate_) {
     return Validation<webrtc::IceCandidateInterface*>::Invalid(error.description);
   }
-  std::cout << candidate;
   return Pure(candidate_);
 }
 
